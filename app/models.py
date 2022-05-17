@@ -1,3 +1,4 @@
+from datetime import date
 from . import db, Loginmanager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
@@ -43,6 +44,16 @@ class Category(db.Model):
     __tablename__ = 'category'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
+
+class Orders(db.Model):
+    __tablename__ = 'orders'
+    id = db.Column(db.Integer, primary_key = True)
+    name=db.Column(db.String(90))
+    order_date=db.Column(db.Integer())
+    amount=db.Column(db.Integer())
+
+
+    
     
     
 
