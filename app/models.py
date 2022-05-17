@@ -26,6 +26,16 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
+class Products(db.Model):
+    __tablename__ = 'products'
+    id = db.Column(db.Integer, primary_key = True)
+    name=db.Column(db.String(90))
+    quantity=db.Column(db.Integer ())
+    price=db.Column(db.Integer())
+
+
+
+
 
 
 
