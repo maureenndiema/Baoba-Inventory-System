@@ -33,6 +33,14 @@ class Products(db.Model):
     quantity=db.Column(db.Integer ())
     price=db.Column(db.Integer())
 
+class Supplier(db.Model):
+    __tablename__ = 'products'
+    id = db.Column(db.Integer, primary_key = True)
+    name=db.Column(db.String(90))
+    product=db.Column(db.String ())
+    payment_mode=db.Column(db.Integer())
+
+
 
 
 
