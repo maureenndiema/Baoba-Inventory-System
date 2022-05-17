@@ -1,4 +1,5 @@
 from datetime import date
+from unicodedata import category
 from . import db, Loginmanager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
@@ -31,6 +32,9 @@ class Products(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
+    Supplier = db.relationship('Supplier', backref='products', lazy='dynamic')
+    Category=db.relationship('Category', backref='products', lazy='dynamic')
+    Category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     quantity=db.Column(db.Integer ())
     price=db.Column(db.Integer())
 
@@ -43,17 +47,22 @@ class Supplier(db.Model):
     __tablename__ = 'supplier'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
+    Products = db.relationship('Product', backref='supplier', lazy='dynamic')
+    Category = db.relationship('Category', backref='supplier', lazy='dynamic')
     payment_mode=db.Column(db.Integer())
 
 class Category(db.Model):
     __tablename__ = 'category'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
+    Products = db.relationship('Product', backref='category', lazy='dynamic')
 
 class Orders(db.Model):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
+    Customer = db.relationship('Customer', backref='orders', lazy='dynamic')
+    Products = db.relationship('Product', backref='orders', lazy='dynamic')
     order_date=db.Column(db.DateTime,default = datetime.utcnow)
     amount=db.Column(db.Integer())
 
@@ -62,6 +71,7 @@ class Customer(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
     email=db.Column(db.String(90))
+    Orders = db.relationship('Orders', backref='customer', lazy='dynamic')
 
 
 
