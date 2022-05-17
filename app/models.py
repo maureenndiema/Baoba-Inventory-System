@@ -2,7 +2,7 @@ from datetime import date
 from . import db, Loginmanager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
-
+from datetime import datetime
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -34,6 +34,11 @@ class Products(db.Model):
     quantity=db.Column(db.Integer ())
     price=db.Column(db.Integer())
 
+
+
+    def __repr__(self):
+        return f"Products {self.title}"
+
 class Supplier(db.Model):
     __tablename__ = 'supplier'
     id = db.Column(db.Integer, primary_key = True)
@@ -49,8 +54,17 @@ class Orders(db.Model):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
-    order_date=db.Column(db.Integer())
+    order_date=db.Column(db.DateTime,default = datetime.utcnow)
     amount=db.Column(db.Integer())
+
+class Customer(db.Model):
+    __tablename__ = 'customer'
+    id = db.Column(db.Integer, primary_key = True)
+    name=db.Column(db.String(90))
+    email=db.Column(db.String(90))
+
+
+
 
 
     
