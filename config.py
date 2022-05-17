@@ -3,7 +3,7 @@ import os
 class Config:
     debug = True
     
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY ='1234'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maureen:1234@localhost/baoba'
 
 class ProdConfig(Config):
