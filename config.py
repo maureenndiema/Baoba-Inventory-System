@@ -21,3 +21,12 @@ class TestConfig(Config):
     Config: The parent configuration class with General configuration settings
     '''
     SQLALCHEMY_DATABASE_URI = ''
+
+class DevConfig(Config):
+    '''
+    Development  configuration child class
+    Args:
+        Config: The parent configuration class with General configuration settings
+    '''
+    SQLALCHEMY_DATABASE_URI = ''
+
