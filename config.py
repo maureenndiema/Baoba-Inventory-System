@@ -30,3 +30,11 @@ class DevConfig(Config):
     '''
     SQLALCHEMY_DATABASE_URI = ''
 
+DEBUG = True
+ENV = 'development'
+
+config_options = {
+    'development':DevConfig,
+    'production':ProdConfig,
+    'test':TestConfig
+}
