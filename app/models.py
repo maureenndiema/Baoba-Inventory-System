@@ -4,6 +4,12 @@ from . import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
+from . import login_manager
+
+# decorator
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -28,50 +34,48 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-class Products(db.Model):
+class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
-    Supplier = db.relationship('Supplier', backref='products', lazy='dynamic')
-    Category=db.relationship('Category', backref='products', lazy='dynamic')
-    Category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     quantity=db.Column(db.Integer ())
     price=db.Column(db.Integer())
-
-
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    supplier_id = db.Column(db.Integer, db.ForeignKey('supplier.id'))
+    
+    
 
     def __repr__(self):
-        return f"Products {self.title}"
+        return f"Product {self.name}"
 
 class Supplier(db.Model):
     __tablename__ = 'supplier'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
-    Products = db.relationship('Product', backref='supplier', lazy='dynamic')
-    Category = db.relationship('Category', backref='supplier', lazy='dynamic')
     payment_mode=db.Column(db.Integer())
+    product = db.relationship('Product', backref='supplier', lazy='dynamic')
+    
 
 class Category(db.Model):
     __tablename__ = 'category'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
-    Products = db.relationship('Product', backref='category', lazy='dynamic')
+    product = db.relationship('Product', backref='category', lazy='dynamic')
 
 class Orders(db.Model):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key = True)
-    name=db.Column(db.String(90))
-    Customer = db.relationship('Customer', backref='orders', lazy='dynamic')
-    Products = db.relationship('Product', backref='orders', lazy='dynamic')
     order_date=db.Column(db.DateTime,default = datetime.utcnow)
     amount=db.Column(db.Integer())
+    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
 
 class Customer(db.Model):
     __tablename__ = 'customer'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
     email=db.Column(db.String(90))
-    Orders = db.relationship('Orders', backref='customer', lazy='dynamic')
+    orders = db.relationship('Orders', backref='customer', lazy='dynamic')
+
 
 
 

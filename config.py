@@ -3,8 +3,8 @@ import os
 class Config:
     debug = True
     
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maureen:1234@localhost/baoba'
+    SECRET_KEY ='1234'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:wambui@localhost/baoba'
 
 class ProdConfig(Config):
     '''
@@ -20,7 +20,7 @@ class TestConfig(Config):
     Args:
     Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maureen:1234@localhost/baoba'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:wambui@localhost/baoba'
 
 class DevConfig(Config):
     '''
@@ -28,7 +28,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maureen:1234@localhost/baoba'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:wambui@localhost/baoba'
 
     DEBUG = True
     ENV = 'development'
