@@ -66,7 +66,7 @@
                                                     <input type="hidden" name="id" value="{{row.id}}">
                                                     <input type="text" class="form-control" name="name"
                                                         value="{{row.name}}">
-                                                    <select class="form-control" name="name">
+                                                    <!-- <select class="form-control" name="name">
                                                         <option value="{{row.name}}">Whiskey</option>
                                                         <option value="{{row.name}}">Gin</option>
                                                         <option value="{{row.name}}">Wine</option>
@@ -76,7 +76,7 @@
                                                         <option value="{{row.name}}">Beer</option>
                                                         <option value="{{row.name}}">Vermouth</option>
 
-                                                    </select>
+                                                    </select> -->
                                                 </div>
                                             </form>
                                         </div>
@@ -105,8 +105,19 @@
                                     <form action="{{url_for('main.insertcategory')}}" method="POST">
                                         <div class="form-group">
                                             <label>Category:</label>
-                                            <input type="text" class="form-control" name="name"
-                                                value="{{category.name}}" required="0">
+                                            <input type="text" class="form-control" name="name" required="0"
+                                                value="{{category.name}}">
+                                                <!-- <select class="form-control" name="name">
+                                                    <option value="{{category.id}}">Whiskey</option>
+                                                    <option value="{{category.id}}">Gin</option>
+                                                    <option value="{{category.id}}">Wine</option>
+                                                    <option value="{{category.id}}">Vodka</option>
+                                                    <option value="{{category.id}}">Brandy</option>
+                                                    <option value="{{category.id}}">Vermouth</option>
+                                                    <option value="{{category.id}}">Beer</option>
+                                                    <option value="{{category.id}}">Vermouth</option>
+
+                                                </select> -->
                                         </div>
                                         <div class="form-group">
                                             <button class="btn btn-primary" type="submit">Add Category</button>

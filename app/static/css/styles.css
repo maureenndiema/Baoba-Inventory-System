@@ -1,3 +1,7 @@
+*{
+    font-family: 'Antonio', sans-serif;
+
+}
 .navbar-fixed-top{
     position: fixed;
     width: 100%;
@@ -6,7 +10,6 @@
 
 }
 .define{
-    font-family: 'Antonio', sans-serif;
     position: relative
 }
 .define button{
@@ -29,15 +32,48 @@ footer{
     position: relative;
     z-index: 2;
     width: 100%;
-    bottom: -1%;
+    bottom: -1%; 
 }
 .dashboard{
     position: fixed;
     left: 0%;
-    top: 5%;
+    top: 15%;
 }
 .col-md-10{
     position: absolute;
     right: 5%;
     max-width: 80%;
+}
+.dash{
+    margin-bottom: 0.2rem;
+}
+.dash img{
+    width: 40px;
+}
+.dash a{
+    text-decoration: none;
+    color:#000000;
+}
+.dash h3{
+    font-size: 1.3rem;
+}
+.dash .card{
+position: relative;
+}
+.dash .card-body, .dash .card-img-top{
+    position: absolute;
+}
+
+.dash .card-body{
+    align-items: center;
+    top: 15%;
+    right: 3%;
+}
+.dash .card-img-top{
+    top: 15%;
+    left: 3%;
+}
+a{
+    text-decoration: none;
+    color: #000000;
 }
