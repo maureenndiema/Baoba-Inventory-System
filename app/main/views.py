@@ -112,3 +112,47 @@ def deleteproduct(id):
     flash("Product Deleted Successfully")
 
     return redirect(url_for('main.product'))
+
+#category
+@main.route('/category')
+def category():
+    all_data = Category.query.all()
+    
+    return render_template("category.html", category = all_data)
+#this route is for inserting data to mysql database via html forms
+@main.route('/insertcategory', methods = ['POST'])
+def insertcategory():
+    if request.method == 'POST':
+        name = request.form['name']
+        
+        my_data = Category(name)
+        db.session.add(my_data)
+        db.session.commit()
+
+        flash("Category Inserted Successfully")
+
+        return redirect(url_for('main.category'))
+        
+#this is our update route where we are going to update our customer
+@main.route('/updatecategory', methods = ['GET', 'POST'])
+def updatecategory():
+
+    if request.method == 'POST':
+        my_data = Category.query.get(request.form.get('id'))
+
+        my_data.name = request.form['name']
+
+        db.session.commit()
+        flash("Category Updated Successfully")
+
+        return redirect(url_for('main.category'))
+
+#This route is for deleting our category
+@main.route('/deletecategory/<id>/', methods = ['GET', 'POST'])
+def deletecategory(id):
+    my_data = Category.query.get(id)
+    db.session.delete(my_data)
+    db.session.commit()
+    flash("Category Deleted Successfully")
+
+    return redirect(url_for('main.category'))

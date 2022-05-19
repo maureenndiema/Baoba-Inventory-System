@@ -68,8 +68,8 @@ class Category(db.Model):
     name=db.Column(db.String(90))
     product = db.relationship('Product', backref='category', lazy='dynamic')
     
-    def __repr__(self):
-        return f'User {self.name}'
+    def __init__(self, name):
+        self.name = name
 
 class Orders(db.Model):
     __tablename__ = 'orders'
