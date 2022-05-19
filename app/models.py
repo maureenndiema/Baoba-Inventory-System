@@ -55,12 +55,18 @@ class Supplier(db.Model):
     payment_mode=db.Column(db.Integer())
     product = db.relationship('Product', backref='supplier', lazy='dynamic')
     
+    def __repr__(self):
+        return f'User {self.name}'
+    
 
 class Category(db.Model):
     __tablename__ = 'category'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
     product = db.relationship('Product', backref='category', lazy='dynamic')
+    
+    def __repr__(self):
+        return f'User {self.name}'
 
 class Orders(db.Model):
     __tablename__ = 'orders'
@@ -68,6 +74,9 @@ class Orders(db.Model):
     order_date=db.Column(db.DateTime,default = datetime.utcnow)
     amount=db.Column(db.Integer())
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
+    
+    def __repr__(self):
+        return f'User {self.order}'
 
 class Customer(db.Model):
     __tablename__ = 'customer'
@@ -75,6 +84,11 @@ class Customer(db.Model):
     name=db.Column(db.String(90))
     email=db.Column(db.String(90))
     orders = db.relationship('Orders', backref='customer', lazy='dynamic')
+    
+    def __init__(self, name, email):
+
+        self.name = name
+        self.email = email
 
 
 

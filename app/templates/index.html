@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid" style="background-color: #E5E5E5;">
+    <div class="row text-center">
+        <div class="col-lg-4 mt-2">
+            <a href="">
+                <div class="card thumbnail" style="width: 100%;height: 40vh;background-color: #A5DCED;">
+                    <img src="{{ url_for('static', filename = 'images/btl2.png')}}" class="card-img-top" alt="images" style="height: 200px; width: 200px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Products</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 mt-2">
+            <a href="">
+                <div class="card thumbnail" style="width: 100%;height: 40vh;background-color: #A5DCED;">
+                    <img src="{{ url_for('static', filename = 'images/bottle.png')}}" class="card-img-top" alt="images" style="height: 200px; width: 200px;"">
+                    <div class="card-body">
+                        <h3 class="card-title">Category</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 mt-2">
+            <a href="">
+                <div class="card thumbnail" style="width: 100%;height: 40vh;background-color: #A5DCED;">
+                    <img src="{{ url_for('static', filename = 'images/lorry.png')}}" class="card-img-top" alt="images" style="height: 200px; width: 200px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Suppliers</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-lg-4 mt-2">
+            <a href="">
+                <div class="card thumbnail" style="width: 100%;height: 40vh;background-color: #A5DCED;">
+                    <img src="{{ url_for('static', filename = 'images/customers.png')}}" class="card-img-top" alt="images"style="height: 200px; width: 200px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Customer</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 mt-2">
+            <a href="">
+                <div class="card thumbnail" style="width: 100%;height: 40vh;background-color: #A5DCED;">
+                    <img src="{{ url_for('static', filename = 'images/cart.png')}}" class="card-img-top" alt="images"style="height: 200px; width: 200px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Orders</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 mt-2">
+            <a href="">
+                <div class="card thumbnail" style="width: 100%;height: 40vh;background-color: #A5DCED;">
+                    <img src="{{ url_for('static', filename = 'images/orders.png')}}" class="card-img-top" alt="images"style="height: 200px; width: 200px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Reports</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
