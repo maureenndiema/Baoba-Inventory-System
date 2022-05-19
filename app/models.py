@@ -43,11 +43,14 @@ class Product(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     supplier_id = db.Column(db.Integer, db.ForeignKey('supplier.id'))
     
-    
+    def __init__(self, name, quantity,price):
 
-    def __repr__(self):
-        return f"Product {self.name}"
-
+        self.name = name
+        self.quantity = quantity
+        self.price = price
+        # self.category_id = category_id
+        # self.supplier_id = supplier_id     
+        
 class Supplier(db.Model):
     __tablename__ = 'supplier'
     id = db.Column(db.Integer, primary_key = True)
