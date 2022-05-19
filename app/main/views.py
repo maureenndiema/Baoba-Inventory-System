@@ -156,3 +156,50 @@ def deletecategory(id):
     flash("Category Deleted Successfully")
 
     return redirect(url_for('main.category'))
+
+#supplier
+@main.route('/supplier')
+def supplier():
+    all_data = Supplier.query.all()
+    
+    return render_template("supplier.html", supplier = all_data)
+
+#this route is for inserting data to mysql database via html forms
+@main.route('/insertsupplier', methods = ['POST'])
+def insertsupplier():
+    if request.method == 'POST':
+        name = request.form['name']
+        payment = request.form['payment']
+        
+        my_data = Supplier(name, payment)
+        db.session.add(my_data)
+        db.session.commit()
+
+        flash("Supplier Inserted Successfully")
+
+        return redirect(url_for('main.supplier'))
+        
+#this is our update route where we are going to update our supplier
+@main.route('/updatesupplier', methods = ['GET', 'POST'])
+def updatesupplier():
+
+    if request.method == 'POST':
+        my_data = Supplier.query.get(request.form.get('id'))
+
+        my_data.name = request.form['name']
+        my_data.payment = request.form['payment']
+
+        db.session.commit()
+        flash("Supplier Updated Successfully")
+
+        return redirect(url_for('main.supplier'))
+
+#This route is for deleting our supplier
+@main.route('/deletesupplier/<id>/', methods = ['GET', 'POST'])
+def deletesupplier(id):
+    my_data = Supplier.query.get(id)
+    db.session.delete(my_data)
+    db.session.commit()
+    flash("Supplier Deleted Successfully")
+
+    return redirect(url_for('main.supplier'))

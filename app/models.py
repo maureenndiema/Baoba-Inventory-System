@@ -55,11 +55,13 @@ class Supplier(db.Model):
     __tablename__ = 'supplier'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
-    payment_mode=db.Column(db.Integer())
+    payment=db.Column(db.String(100))
     product = db.relationship('Product', backref='supplier', lazy='dynamic')
     
-    def __repr__(self):
-        return f'User {self.name}'
+    def __init__(self, name, payment):
+
+        self.name = name
+        self.payment = payment
     
 
 class Category(db.Model):
