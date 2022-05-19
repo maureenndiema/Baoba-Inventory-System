@@ -43,20 +43,25 @@ class Product(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     supplier_id = db.Column(db.Integer, db.ForeignKey('supplier.id'))
     
-    
+    def __init__(self, name, quantity,price):
 
-    def __repr__(self):
-        return f"Product {self.name}"
-
+        self.name = name
+        self.quantity = quantity
+        self.price = price
+        # self.category_id = category_id
+        # self.supplier_id = supplier_id     
+        
 class Supplier(db.Model):
     __tablename__ = 'supplier'
     id = db.Column(db.Integer, primary_key = True)
     name=db.Column(db.String(90))
-    payment_mode=db.Column(db.Integer())
+    payment=db.Column(db.String(100))
     product = db.relationship('Product', backref='supplier', lazy='dynamic')
     
-    def __repr__(self):
-        return f'User {self.name}'
+    def __init__(self, name, payment):
+
+        self.name = name
+        self.payment = payment
     
 
 class Category(db.Model):
@@ -65,8 +70,8 @@ class Category(db.Model):
     name=db.Column(db.String(90))
     product = db.relationship('Product', backref='category', lazy='dynamic')
     
-    def __repr__(self):
-        return f'User {self.name}'
+    def __init__(self, name):
+        self.name = name
 
 class Orders(db.Model):
     __tablename__ = 'orders'
