@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% block content %}
+
+<div class="container view">
+    <div class="row">
+        <!-- DASHBOARD  -->
+        {% block dashboard %}
+        {% include 'dashboard.html' %}
+        {% endblock %}
+        <!-- DASHBOARD END -->
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col md-12">
+                    <div class="jumbotron p-3">
+                        <h2 class="define">Manage <b>Suppliers </b> <button type="button"
+                                class="btn btn-info float-right" data-toggle="modal" data-target="#mymodal">Add
+                                Product</button> </h2>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+
+                        <div class="alert alert-success alert-dismissable" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true">x</span>
+                            </button>
+
+                            {{message}}
+
+                        </div>
+
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+
+                        <table class="table table-hover table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Payment mode</th>
+                                <!-- <th>Price Per Unit</th> -->
+                                <!-- <th>category_id</th>
+                            <th>supplier_id</th> -->
+                                <th>Action</th>
+                            </tr>
+
+                            {% for row in supplier %}
+                            <tr>
+                                <td>{{row.id}}</td>
+                                <td>{{row.name}}</td>
+                                <td>{{row.payment}}</td>
+
+                                <!-- <td>{{row.category_id}}</td>
+                            <td>{{row.supplier_id}}</td> -->
+
+                                <td>
+                                    <a href="/updatesupplier/{{row.id}}" class="btn btn-warning btn-xs"
+                                        data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
+                                    <a href="/deletesupplier/{{row.id}}" class="btn btn-danger btn-xs"
+                                        onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                                </td>
+                            </tr>
+
+                            <!-- Modal Edit Customer-->
+                            <div id="modaledit{{row.id}}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Update Information</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{url_for('main.updatesupplier')}}" method="POST">
+                                                <div class="form-group">
+                                                    <label>Name:</label>
+                                                    <input type="hidden" name="id" value="{{row.id}}">
+                                                    <input type="text" class="form-control" name="name"
+                                                        value="{{row.name}}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Payment Mode:</label>
+                                                    <input type="text" class="form-control" name="payment"
+                                                        value="{{row.payment}}">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <button class="btn btn-primary" type="submit">Update</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+                        </table>
+                    </div>
+
+                    <!-- Modal Add Customer-->
+
+                    <div id="mymodal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add Supplier</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{url_for('main.insertsupplier')}}" method="POST">
+                                        <div class="form-group">
+                                            <label>Name:</label>
+                                            <input type="text" class="form-control" name="name" required="1">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Payment Mode:</label>
+                                            <input type="text" class="form-control" name="payment" required="1">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Add Product</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

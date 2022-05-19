@@ -1,4 +1,5 @@
-baoba/
-*pyc
+baobavirtual/
+*.pyc
 .vscode/
 start.sh
+__pycache__/
