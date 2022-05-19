@@ -4,7 +4,7 @@ class Config:
     debug = True
     
     SECRET_KEY ='1234'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://riziki:riziki@localhost/baoba'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maureen:1234@localhost/baoba'
     # ['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 class ProdConfig(Config):
@@ -21,7 +21,7 @@ class TestConfig(Config):
     Args:
     Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:wambui@localhost/baoba'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maureen:1234@localhost/baoba'
 
 class DevConfig(Config):
     '''
@@ -29,7 +29,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://riziki:riziki@localhost/baoba'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maureen:1234@localhost/baoba'
 
     DEBUG = True
     ENV = 'development'
