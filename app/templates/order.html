@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col md-12">
                     <div class="jumbotron p-3">
-                        <h2 class="define">Manage <b>Products </b> <button type="button"
+                        <h2 class="define">Manage <b>Orders </b> <button type="button"
                                 class="btn btn-info float-right" data-toggle="modal" data-target="#mymodal">Add
                                 Product</button> </h2>
                         {% with messages = get_flashed_messages() %}
@@ -36,33 +36,33 @@
                         <table class="table table-hover table-dark">
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Order Date</th>
                                 <th>Quantity</th>
-                                <th>Price Per Unit</th>
+                                <th>Price</th>
                                 <!-- <th>category_id</th>
                             <th>supplier_id</th> -->
                                 <th>Action</th>
                             </tr>
 
-                            {% for row in product %}
+                            {% for row in order %}
                             <tr>
                                 <td>{{row.id}}</td>
-                                <td>{{row.name}}</td>
-                                <td>{{row.quantity}}</td>
-                                <td>{{row.price}}</td>
+                                <td>{{row.order_date}}</td>
+                                <td>{{row.order.quantity}}</td>
+                                <td>{{row.order.price}}</td>
                                 <!-- <td>{{row.category_id}}</td>
                             <td>{{row.supplier_id}}</td> -->
 
-                                <td>
+                                <!-- <td>
                                     <a href="/updateproduct/{{row.id}}" class="btn btn-warning btn-xs"
                                         data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
                                     <a href="/deleteproduct/{{row.id}}" class="btn btn-danger btn-xs"
                                         onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
-                                </td>
+                                </td> -->
                             </tr>
 
                             <!-- Modal Edit Customer-->
-                            <div id="modaledit{{row.id}}" class="modal fade" role="dialog">
+                            <!-- <div id="modaledit{{row.id}}" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -85,7 +85,7 @@
                                                     <label>Price:</label>
                                                     <input type="text" class="form-control" name="price"
                                                         value="{{row.price}}">
-                                                </div>
+                                                </div> -->
                                                 <!-- <div class="form-group">
                                                 <label>Category:</label>
                                                 <input type="text" class="form-control" name="category" value="{{row.category}}">   
@@ -94,7 +94,7 @@
                                                 <label>Supplier:</label>
                                                 <input type="text" class="form-control" name="supplier" value="{{row.supplier}}">   
                                             </div>  -->
-                                                <div class="form-group">
+                                                <!-- <div class="form-group">
                                                     <button class="btn btn-primary" type="submit">Update</button>
                                                 </div>
                                             </form>
@@ -106,7 +106,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             {% endfor %}
                         </table>
@@ -118,12 +118,12 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Add Customer</h4>
+                                    <h4 class="modal-title">Add Order</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{url_for('main.insertproduct')}}" method="POST">
+                                    <form action="{{url_for('main.makeorder')}}" method="POST">
                                         <div class="form-group">
-                                            <label>Name:</label>
+                                            <label>Product:</label>
                                             <input type="text" class="form-control" name="name" required="1">
                                         </div>
 
@@ -131,10 +131,10 @@
                                             <label>Quantity:</label>
                                             <input type="text" class="form-control" name="quantity" required="1">
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label>Price:</label>
                                             <input type="text" class="form-control" name="price" required="1">
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="form-group">
                         <label>Category:</label>
                         <input type="text" class="form-control" name="category_id" required="1">   
@@ -144,7 +144,7 @@
                         <input type="text" class="form-control" name="supplier_id" required="1">   
                     </div>  -->
                                         <div class="form-group">
-                                            <button class="btn btn-primary" type="submit">Add Product</button>
+                                            <button class="btn btn-primary" type="submit">Order</button>
                                         </div>
                                     </form>
                                 </div>

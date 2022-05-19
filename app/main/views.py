@@ -203,3 +203,27 @@ def deletesupplier(id):
     flash("Supplier Deleted Successfully")
 
     return redirect(url_for('main.supplier'))
+# orders
+@main.route('/orders')
+def order():
+    all_data = Orders.query.all()
+    
+    return render_template("order.html", order = all_data)
+
+# This route is for making order
+@main.route('/makeorder', methods = ['POST'])
+def makeorder(product_id):
+    order = Orders.query.get(product_id)
+    
+    if request.method == 'POST':
+        name = request.form['order.name']
+        quantity = request.form['order.quantity']
+        product_id = product.id
+    
+        my_data = order(name,quantity )
+        db.session.add(my_data)
+        db.session.commit()
+
+        flash("Order registered")
+
+        return redirect(url_for('main.makeorder'))

@@ -13,14 +13,20 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <!-- font-family: 'Antonio', sans-serif; -->
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;500;600&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+            
             <title>Baobar Inventory</title>
             {% endblock %}
         </head>
     <body>
         
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #676767;">
+        <nav class="navbar-fixed-top navbar navbar-expand-lg navbar-dark" style="background-color: #676767;">
             <div class="container-fluid">
-                <a class="navbar-brand text-white" style="font-size: 2rem; font-weight: bolder;" href="#">Baobar Inventory</a>
+                <a class="navbar-brand text-white" style="font-size: 1.5rem; font-weight: bolder; font-family: Antonio,sans-serif;" href="{{ url_for ('main.index') }}">Baobar-Inventory</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>                                

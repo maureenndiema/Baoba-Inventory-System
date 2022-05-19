@@ -42,6 +42,8 @@ class Product(db.Model):
     price=db.Column(db.Integer())
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     supplier_id = db.Column(db.Integer, db.ForeignKey('supplier.id'))
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.id'))
+    
     
     def __init__(self, name, quantity,price):
 
@@ -79,6 +81,11 @@ class Orders(db.Model):
     order_date=db.Column(db.DateTime,default = datetime.utcnow)
     amount=db.Column(db.Integer())
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
+    product = db.relationship('Product', backref='order', lazy='dynamic')
+    
+    def __init__(self, product):
+
+        self.product_id = product
     
     def __repr__(self):
         return f'User {self.order}'

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid" style="background-color: #E5E5E5;">
+<div class="container-fluid view" style="background-color: #E5E5E5;">
     <div class="row text-center">
         <div class="col-lg-4 mt-2">
             <a href="/product">
@@ -45,7 +45,7 @@
             </a>
         </div>
         <div class="col-lg-4 mt-2">
-            <a href="">
+            <a href="orders">
                 <div class="card thumbnail" style="width: 100%;height: 40vh;background-color: #A5DCED;">
                     <img src="{{ url_for('static', filename = 'images/cart.png')}}" class="card-img-top" alt="images"style="height: 200px; width: 200px; margin-left: 25%;">
                     <div class="card-body">
